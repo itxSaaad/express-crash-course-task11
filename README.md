@@ -44,17 +44,11 @@
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/) - JavaScript runtime built on Chrome's V8 JavaScript engine
-- [npm](https://www.npmjs.com/) - Node.js package manager
-- [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
-- [EJS](https://ejs.co/) - Embedded JavaScript templating
-- [dotenv](https://www.npmjs.com/package/dotenv) - Loads environment variables from a .env file into process.env
-- [morgan](https://www.npmjs.com/package/morgan) - HTTP request logger middleware for Node.js
-- [nodemon](https://www.npmjs.com/package/nodemon) - Monitor for any changes in your source and automatically restart your server
-- [colors](https://www.npmjs.com/package/colors) - Get colors in your Node.js console
-- [uuid](https://www.npmjs.com/package/uuid) - Simple, fast generation of RFC4122 UUIDs
-- [Postman](https://www.postman.com/) - API development environment
-- [VS Code](https://code.visualstudio.com/) - Code editor
-- [Git](https://git-scm.com/) - Open source distributed version control system
+- [JavaScript Fundamentals](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics) - JavaScript (variables, conditionals, loops, functions, arrays, objects, classes)
+- [Asynchronous Programming](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous) - Asynchronous programming (callbacks, promises, async/await)
+- [JSON](https://www.json.org/json-en.html) - How JSON APIs work
+- [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP) - HTTP Basics (status codes, headers, etc.)
+- [NPM](https://www.npmjs.com/) - Node Package Manager
 
 ### Installation
 

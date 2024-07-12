@@ -1,0 +1,27 @@
+{
+  "name": "express-crash-course-task11",
+  "version": "1.0.0",
+  "description": "Blogs System using Express Server side App",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itxSaaad/express-crash-course-task11.git"
+  },
+  "author": "Muhammad Saad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itxSaaad/express-crash-course-task11/issues"
+  },
+  "homepage": "https://github.com/itxSaaad/express-crash-course-task11#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
