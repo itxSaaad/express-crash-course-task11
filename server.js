@@ -8,6 +8,10 @@ const PORT = process.env.PORT || 5000;
 
 const __dirname = path.resolve();
 
+// Serve static files
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// API routes
 // app.get('/', (req, res) => {
 //   res.send(
 //     `<section style="font-family: Arial, sans-serif; text-align: center; padding: 20px;">
@@ -26,12 +30,33 @@ const __dirname = path.resolve();
 //   );
 // });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+let posts = [
+  {
+    id: 1,
+    title: 'Post 1',
+  },
+  {
+    id: 2,
+    title: 'Post 2',
+  },
+  {
+    id: 3,
+    title: 'Post 3',
+  },
+];
+
+// API routes
+app.get('/api/posts', (req, res) => {
+  res.json(posts);
 });
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'about.html'));
-});
+
+// Serve static files
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// });
+// app.get('/about', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'about.html'));
+// });
 
 app.listen(PORT, () => {
   console.log(`Server is running in ${NODE_ENV} mode on Port ${PORT}!`);
