@@ -1,22 +1,18 @@
 import express from 'express';
 import morgan from 'morgan';
-import path from 'path';
-
-const app = express();
+// import path from 'path';
 
 import postRoutes from './routes/postRoutes.js';
+
+import logger from './middlewares/logger.middleware.js';
+import errorHandler from './middlewares/error.middleware.js';
+
+const app = express();
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 5000;
 
 // const __dirname = path.resolve();
-
-// const logger = (req, res, next) => {
-//   console.log(
-//     `${req.method} ${req.protocol}://${req.get('host')}${req.originalUrl}`
-//   );
-//   next();
-// };
 
 // Middleware
 app.use(express.json());
@@ -49,6 +45,9 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/posts', postRoutes);
+
+// Error handler
+app.use(errorHandler);
 
 // Serve static files
 // app.get('/', (req, res) => {
