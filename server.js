@@ -1,11 +1,13 @@
 import express from 'express';
 import morgan from 'morgan';
+import colors from 'colors';
 // import path from 'path';
 
 import postRoutes from './routes/postRoutes.js';
 
-import logger from './middlewares/logger.middleware.js';
+// import logger from './middlewares/logger.middleware.js';
 import errorHandler from './middlewares/error.middleware.js';
+import notFound from './middlewares/notFound.middleware.js';
 
 const app = express();
 
@@ -47,6 +49,7 @@ app.get('/', (req, res) => {
 app.use('/api/posts', postRoutes);
 
 // Error handler
+app.use(notFound);
 app.use(errorHandler);
 
 // Serve static files
@@ -58,5 +61,7 @@ app.use(errorHandler);
 // });
 
 app.listen(PORT, () => {
-  console.log(`Server is running in ${NODE_ENV} mode on Port ${PORT}!`);
+  console.log(
+    `Server is running in ${NODE_ENV} mode on Port ${PORT}!`.yellow.bold
+  );
 });
