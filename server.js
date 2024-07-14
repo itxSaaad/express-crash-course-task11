@@ -10,9 +10,17 @@ const PORT = process.env.PORT || 5000;
 
 // const __dirname = path.resolve();
 
+const logger = (req, res, next) => {
+  console.log(
+    `${req.method} ${req.protocol}://${req.get('host')}${req.originalUrl}`
+  );
+  next();
+};
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(logger);
 
 // Serve static files
 // app.use(express.static(path.join(__dirname, 'public')));
