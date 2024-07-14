@@ -1,7 +1,8 @@
 import express from 'express';
 import morgan from 'morgan';
 import colors from 'colors';
-// import path from 'path';
+import { fileURLToPath } from 'url';
+import path from 'path';
 
 import postRoutes from './routes/postRoutes.js';
 
@@ -15,6 +16,8 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 5000;
 
 // const __dirname = path.resolve();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(express.json());
@@ -25,7 +28,7 @@ if (NODE_ENV === 'development') {
 }
 
 // Serve static files
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // API routes
 app.get('/', (req, res) => {
@@ -46,19 +49,19 @@ app.get('/', (req, res) => {
   );
 });
 
+// Serve static files
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'about.html'));
+});
+
 app.use('/api/posts', postRoutes);
 
 // Error handler
 app.use(notFound);
 app.use(errorHandler);
-
-// Serve static files
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// });
-// app.get('/about', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'about.html'));
-// });
 
 app.listen(PORT, () => {
   console.log(
