@@ -55,7 +55,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve static files
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Code Wizard', message: 'Hello, Code Wizard!' });
+  res.render('index', {
+    title: 'Code Wizard',
+    message: 'Hello, Code Wizard!',
+    people: [{ name: 'John Doe' }, { name: 'Jane Doe' }, { name: 'Jim Doe' }],
+  });
 });
 
 app.use('/api/posts', postRoutes);
