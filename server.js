@@ -1,12 +1,12 @@
 import express from 'express';
-import path from 'path';
+import path, { parse } from 'path';
 
 const app = express();
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const PORT = process.env.PORT || 5000;
 
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 
 // Serve static files
 // app.use(express.static(path.join(__dirname, 'public')));
@@ -45,9 +45,22 @@ let posts = [
   },
 ];
 
-// API routes
+//  Get all posts
 app.get('/api/posts', (req, res) => {
-  res.json(posts);
+  const limit = parseInt(req.query.limit);
+
+  if (!isNaN(limit) && limit > 0) {
+    res.json(posts.slice(0, limit));
+  } else {
+    res.json(posts);
+  }
+});
+
+// Get single post
+app.get('/api/posts/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const post = posts.filter((post) => post.id === id);
+  res.json(post);
 });
 
 // Serve static files
