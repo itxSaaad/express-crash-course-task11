@@ -1,5 +1,6 @@
 import express from 'express';
-// import path, { parse } from 'path';
+import morgan from 'morgan';
+import path from 'path';
 
 const app = express();
 
@@ -10,17 +11,20 @@ const PORT = process.env.PORT || 5000;
 
 // const __dirname = path.resolve();
 
-const logger = (req, res, next) => {
-  console.log(
-    `${req.method} ${req.protocol}://${req.get('host')}${req.originalUrl}`
-  );
-  next();
-};
+// const logger = (req, res, next) => {
+//   console.log(
+//     `${req.method} ${req.protocol}://${req.get('host')}${req.originalUrl}`
+//   );
+//   next();
+// };
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(logger);
+if (NODE_ENV === 'development') {
+  // app.use(logger);
+  app.use(morgan('dev'));
+}
 
 // Serve static files
 // app.use(express.static(path.join(__dirname, 'public')));
