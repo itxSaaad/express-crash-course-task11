@@ -40,4 +40,24 @@ router.get('/:id', (req, res) => {
   res.status(200).json(post);
 });
 
+// Create a post
+router.post('/', (req, res) => {
+  const { title } = req.body;
+  const id = posts.length + 1;
+  const newPost = {
+    id,
+    title,
+  };
+
+  if (!title) {
+    return res.status(400).json({ message: 'Please include a title' });
+  } else {
+    if (!newPost) {
+      return res.status(400).json({ message: 'Invalid post' });
+    }
+    posts.push(newPost);
+    res.status(201).json(newPost);
+  }
+});
+
 export default router;

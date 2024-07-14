@@ -10,6 +10,10 @@ const PORT = process.env.PORT || 5000;
 
 // const __dirname = path.resolve();
 
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // Serve static files
 // app.use(express.static(path.join(__dirname, 'public')));
 
@@ -26,7 +30,7 @@ app.get('/', (req, res) => {
       </div>
       <footer style="margin-top: 30px; font-size: 0.8em; color: #9E9E9E;">
         <p>Need more magic? Explore the code and unleash your creativity!</p>
-        <p>Happy coding, developer! 🎉</p>
+        <p>Happy Coding, Developer! 🎉</p>
       </footer>
     </section>`
   );
